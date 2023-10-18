@@ -1,0 +1,21 @@
+[
+    {
+        "_id":"1", 
+        "icon":"https://img.icons8.com/?size=256&id=14181&format=png", 
+        "title":"PHONE",
+        "number":"+38 (012) 34 56 789"
+    },
+    {
+        "_id":"2", 
+        "icon":"https://img.icons8.com/?size=32&id=15989&format=png", 
+        "title":"ADDRESS",
+        "number":"+38 (012) 34 56 789"
+    },
+    {
+        "_id":"3", 
+        "icon":"https://img.icons8.com/?size=50&id=34&format=png", 
+        "title":"ADDRES",
+        "number":"Mon - Fri: 08:00 - 22:00"
+    }
+    
+]
