@@ -33,7 +33,7 @@ const Register = () => {
     createUser(email, password)
       .then(result => {
         const loggedUser = result.user;
-        console.log(loggedUser);
+        // console.log(loggedUser);
         updateUserProfile(name, photourl)
         form.reset()
         navigate('/')
@@ -48,7 +48,7 @@ const Register = () => {
         })  
       })
       .catch((error) => { console.log(error) })
-    console.log({ name, photourl, email, password });
+    // console.log({ name, photourl, email, password });
   }
 
   return (

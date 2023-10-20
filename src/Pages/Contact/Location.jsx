@@ -24,7 +24,7 @@ const Location = () => {
     },
   ]);
 
-  console.log(location);
+  // console.log(location);
 
   return (
     <div className="py-12">

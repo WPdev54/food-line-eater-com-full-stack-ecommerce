@@ -1,23 +1,44 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProviders";
-import swal from "sweetalert";
+import Swal from 'sweetalert2'
+import {BsCart4} from 'react-icons/bs'
+import useCart from "../Hooks/useCart";
 
 const Nav = () => {
 
   const {user , logOut} = useContext(AuthContext)
+  const [cart] = useCart();
 
   const handleLogout = () => {
-    logOut()
-    swal({
-      icon: "success ",
-      title: "Logged Out Sucessfull",
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Log Out'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Log Out',
+          'successFully',
+          logOut()
+        )
+      }
     })
-    console.log();
+    // console.log();
   }
 
+/*   useEffect(()=>{
+
+  }, []) */
+
+
+
   return (
-    <nav className="bg-black md:bg-opacity-40 md:fixed z-50 w-full">
+    <nav className="bg-black md:bg-opacity-50 md:fixed z-50 w-full">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/" className="flex items-center">
           
@@ -90,6 +111,15 @@ const Nav = () => {
                 className="md:relative top-2 block py-2 pl-3 pr-4 rounded  md:border-0 md:p-0 "
               >
                 Our Shop
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/shop"
+                className="md:relative top-0 flex py-2 pl-3 pr-4 rounded  md:border-0 md:p-0 "
+              >
+                <BsCart4 size={35} />
+                <div className="badge relative right-4 badge-success">{cart?.length}</div>
               </Link>
             </li>
             <li>
