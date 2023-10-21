@@ -10,6 +10,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
 import swal from "sweetalert";
 import { Button } from "@material-tailwind/react";
+import Swal from "sweetalert2";
+import GoogleProvider from "../../Providers/GoogleProvider";
 
 const Register = () => {
 
@@ -22,33 +24,44 @@ const Register = () => {
     navigate('/')
   }
 
-  const handleForm = event => {
-    event.preventDefault();
-    const form = event.target;
+  const handleForm = data => {
+    data.preventDefault();
+    const form = data.target;
     const name = form.name.value
     const email = form.email.value
     const password = form.password.value
     const photourl = form.photourl.value
-
     createUser(email, password)
-      .then(result => {
-        const loggedUser = result.user;
-        // console.log(loggedUser);
-        updateUserProfile(name, photourl)
-        form.reset()
-        navigate('/')
-        .then(() => {
-          swal({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Done',
-            showConfirmButton: false,
-            timer: 1500
-          })
-        })  
+      .then((res) => {
+        const CreatedUser = res.user;
+        console.log(CreatedUser);
+
+        const savedUser = {email: CreatedUser.email , name , password }
+
+        fetch('http://localhost:5000/user' , {
+          method: 'POST',
+          headers: {
+            'content-type' : 'application/json'
+          },
+          body: JSON.stringify(savedUser)
+        })
+        .then(res => res.json())
+        .then(data => {
+          if(data.insertedId){
+            navigate('/')
+            Swal.fire(
+              'Register And Login Sucessful',
+              'Order Foods'
+            )
+          }
+        })
+
       })
-      .catch((error) => { console.log(error) })
-    // console.log({ name, photourl, email, password });
+      .catch((e) => {
+        console.log(e);
+      })
+
+
   }
 
   return (
@@ -138,12 +151,7 @@ const Register = () => {
               <Link to="/login" className="text-center text-yellow-900 font-black">Already Have An Account? Sign In</Link><br />
               <label className="text-gray-600 font-black text-center">Or , Sign In with</label>
               <br />
-              <button onClick={handleGoogleLogin}>
-                <AiFillGoogleCircle size={42} className="mx-4 text-amber-900 mt-3" />
-              </button>
-              <button>
-                <AiFillGithub size={42} className="mx-4 text-amber-900 mt-3" />
-              </button>
+              <GoogleProvider />
             </div>
           </div>
         </div>

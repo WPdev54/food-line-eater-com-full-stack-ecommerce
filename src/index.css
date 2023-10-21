@@ -56,3 +56,18 @@ ul {
 li {
   border: 0 !important;
 }
+
+
+a.active{
+  color: white;
+  background-color: #D1A054 !important;
+}
+
+.link-of-nav{
+  font-weight: 800;
+}
+
+.link-of-nav.active{
+  color: #D1A054;
+  background: none !important;
+}

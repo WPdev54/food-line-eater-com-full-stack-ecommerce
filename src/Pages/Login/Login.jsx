@@ -13,8 +13,10 @@ import {
 } from "react-simple-captcha";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
+import GoogleProvider from "../../Providers/GoogleProvider";
 
 const Login = () => {
+ 
 
   const {signIn} = useContext(AuthContext)
   const navigate = useNavigate()
@@ -161,21 +163,9 @@ const Login = () => {
                 Or , Sign In with
               </label>
               <br />
-              <button>
-                <TiSocialFacebookCircular
-                  size={42}
-                  className="mx-4 text-amber-900 mt-3"
-                />
-              </button>
-              <button>
-                <AiFillGoogleCircle
-                  size={42}
-                  className="mx-4 text-amber-900 mt-3"
-                />
-              </button>
-              <button>
-                <AiFillGithub size={42} className="mx-4 text-amber-900 mt-3" />
-              </button>
+        
+              <GoogleProvider />
+      
             </div>
           </div>
         </div>

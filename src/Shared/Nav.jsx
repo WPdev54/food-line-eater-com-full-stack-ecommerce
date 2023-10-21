@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProviders";
 import Swal from 'sweetalert2'
 import {BsCart4} from 'react-icons/bs'
@@ -40,12 +40,12 @@ const Nav = () => {
   return (
     <nav className="bg-black md:bg-opacity-50 md:fixed z-50 w-full">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link to="/" className="flex items-center">
+        <NavLink to="/home" className="flex items-center">
           
           <span className="text-transparent pt-2 mb-4 font-black bg-clip-text bg-gradient-to-br text-2xl from-yellow-400 to-orange-400">
             EATER
           </span>
-        </Link> 
+        </NavLink> 
         <button
           data-collapse-toggle="navbar-default"
           type="button"
@@ -73,54 +73,54 @@ const Nav = () => {
         <div className="hidden w-full md:block md:w-auto" id="navbar-default">
           <ul className="font-medium flex  flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg text-white md:flex-row md:space-x-8 md:mt-0 md:border-0">
             <li>
-              <Link
+              <NavLink
                 to="/"
-                className="md:relative top-2 block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:p-0"
+                className="link-of-nav md:relative top-2 block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:p-0"
                 aria-current="page"
               >
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/contact"
-                className="md:relative top-2 block py-2 pl-3 pr-4 rounded md:hover:bg-transparent md:border-0 md:p-0 "
+                className="link-of-nav md:relative top-2 block py-2 pl-3 pr-4 rounded md:hover:bg-transparent md:border-0 md:p-0 "
               >
                 Contact Us
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
-                to="#"
-                className="md:relative top-2 block py-2 pl-3 pr-4 rounded  md:border-0 md:p-0 "
+              <NavLink
+                to="/dashboard"
+                className="link-of-nav md:relative top-2 block py-2 pl-3 pr-4 rounded  md:border-0 md:p-0 "
               >
                 Dashboard
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/menu"
-                className="md:relative top-2 block py-2 pl-3 pr-4 rounded  md:border-0 md:p-0 "
+                className="link-of-nav md:relative top-2 block py-2 pl-3 pr-4 rounded  md:border-0 md:p-0 "
               >
                 Our Menu
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/shop"
-                className="md:relative top-2 block py-2 pl-3 pr-4 rounded  md:border-0 md:p-0 "
+                className="link-of-nav md:relative top-2 block py-2 pl-3 pr-4 rounded  md:border-0 md:p-0 "
               >
                 Our Shop
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
-                to="/shop"
-                className="md:relative top-0 flex py-2 pl-3 pr-4 rounded  md:border-0 md:p-0 "
+              <NavLink
+                to="/dashboard/mycart"
+                className="link-of-nav md:relative top-0 flex py-2 pl-3 pr-4 rounded  md:border-0 md:p-0 "
               >
                 <BsCart4 size={35} />
                 <div className="badge relative right-4 badge-success">{cart?.length}</div>
-              </Link>
+              </NavLink>
             </li>
             <li>
               {
@@ -129,12 +129,12 @@ const Nav = () => {
                   <button onClick={handleLogout} className="btn-error rounded-3xl py-1 px-4 ">Log Out</button>
                   <img src={user?.photoURL} className="h-12  rounded-full"/>
                 </div>:
-                <Link
+                <NavLink
                 to="/login"
-                className="block py-2 md:px-5 bg-orange-600  rounded  md:border-0  "
+                className="link-of-nav block py-2 md:px-5 bg-orange-600  rounded  md:border-0  "
               >
                 Sign In
-              </Link>
+              </NavLink>
               }
             </li>
           </ul>
