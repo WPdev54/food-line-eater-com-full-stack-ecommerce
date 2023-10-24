@@ -11,6 +11,7 @@ import Secret from "../Secret/Secret";
 import Dashboard from "../Dashboard";
 import DashboardHome from "../Pages/Dahboard/DashboardHome";
 import MyCart from "../Pages/Dahboard/My Cart/MyCart";
+import UsersManageMent from "../Pages/Dahboard/All Users/UsersManageMent";
 
 export const router = createBrowserRouter([
     {
@@ -58,6 +59,10 @@ export const router = createBrowserRouter([
         {
           path: 'mycart',
           element: <MyCart />
+        },
+        {
+          path: 'users',
+          element: <UsersManageMent />
         },
       ]
     }

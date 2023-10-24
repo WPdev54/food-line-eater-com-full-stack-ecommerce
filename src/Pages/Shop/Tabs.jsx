@@ -16,7 +16,8 @@ const Food = () => {
 
 
   return (
-    <Tabs  className=" py-8 uppercase border-0  text-center">
+    <div >
+      <Tabs  className=" py-8 uppercase border-0  text-center">
       <TabList>
         <Tab>Salad</Tab>
         <Tab>pizza</Tab>
@@ -46,6 +47,7 @@ const Food = () => {
       </TabPanel>
 
     </Tabs>
+    </div>
   );
 };
 

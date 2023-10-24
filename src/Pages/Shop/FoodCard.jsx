@@ -64,6 +64,7 @@ const FoodCard = ({item}) => {
         <figure>
           <img
             src={image}
+            loading="eager|lazy"
           />
         </figure>
         <div className="card-body">

@@ -6,12 +6,12 @@ const GoogleProvider = () => {
     const { authWithGoogle } = useContext(AuthContext)
     const handleGoogleLogin = () => {
         authWithGoogle()
-            .then((res) => {
-                const loggedUser = res.user;
-                console.log(loggedUser);
+        .then((res) => {
+            const loggedUser = res.user;
+            console.log(loggedUser);
 
                 const savedUser = { email: loggedUser.email, name:loggedUser.displayName }
-
+                
                 fetch('http://localhost:5000/user', {
                     method: 'POST',
                     headers: {
@@ -24,16 +24,17 @@ const GoogleProvider = () => {
                         if (data.insertedId) {
                             navigate('/')
                             Swal.fire(
-                                'Register And Login Sucessful',
+                                'Login Successful',
                                 'Order Foods'
-                            )
-                        }
-                    })
-
+                                )
+                            }
+                        })
+                        
+                        // navigate('/')
             })
-            .catch((e) => {
+            /* .catch((e) => {
                 console.log(e);
-            })
+            }) */
     }
     return (
         <div>

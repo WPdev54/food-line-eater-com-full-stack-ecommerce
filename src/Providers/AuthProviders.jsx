@@ -10,6 +10,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import app from "../Firebase/firebase.config";
+import axios from 'axios'
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -27,27 +28,27 @@ const AuthProviders = ({ children }) => {
     return createUserWithEmailAndPassword(auth, displayName, email, password);
   };
 
-  const authWithGoogle = async() => {
+  const authWithGoogle = async () => {
     setloading(true)
-    return signInWithPopup(auth , provider)
-    .then((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      // The signed-in user info.
-      const user = result.user;
-      // IdP data available using getAdditionalUserInfo(result)
-      // ...
-    }).catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.customData.email;
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      // ...
-    });
+    return signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+      }).catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
   }
 
   const signIn = (email, password) => {
@@ -74,19 +75,19 @@ const AuthProviders = ({ children }) => {
 
 
 
-/*       // get and set token
-      if(currentUser){
-        axios.post('https://bistro-boss-server-fawn.vercel.app/jwt', {email: currentUser.email})
-        .then(data =>{
+      // get and set token
+      if (currentUser) {
+        axios.post('http://localhost:5000/jwt', { email: currentUser.email })
+          .then(data => {
             // console.log(data.data.token)
             localStorage.setItem('access-token', data.data.token)
             setloading(false);
-        })
-    }
-    else{
+          })
+      }
+      else {
         localStorage.removeItem('access-token')
-    }
- */
+      }
+
       setloading(false);
     });
     return () => {

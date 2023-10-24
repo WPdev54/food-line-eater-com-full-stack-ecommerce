@@ -31,12 +31,13 @@ const Register = () => {
     const email = form.email.value
     const password = form.password.value
     const photourl = form.photourl.value
+    const rank = ""
     createUser(email, password)
       .then((res) => {
         const CreatedUser = res.user;
         console.log(CreatedUser);
 
-        const savedUser = {email: CreatedUser.email , name , password }
+        const savedUser = {email: CreatedUser.email , name , password , rank }
 
         fetch('http://localhost:5000/user' , {
           method: 'POST',
