@@ -9,12 +9,13 @@ import { GrDeliver } from 'react-icons/gr'
 import useCart from './Hooks/useCart';
 import Admin from './Pages/Dahboard/Admin-lists';
 import User from './Pages/Dahboard/User-lists';
+import useAdmin from './Hooks/useAdmin';
 
 
 const Dashboard = () => {
 
     const [cart] = useCart()
-    const [isAdmin , setIsAdmin] = useState(true    )
+    const [isAdmin] = useAdmin()
 
     return (
         <div className="drawer lg:drawer-open">

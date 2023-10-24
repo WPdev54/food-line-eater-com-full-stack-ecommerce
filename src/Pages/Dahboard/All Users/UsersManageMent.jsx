@@ -7,14 +7,15 @@ import SharedTitle from '../../../Shared/sharedTitle';
 // import { useReducedMotion } from 'framer-motion';
 import Swal from 'sweetalert2';
 import DashboardHome from '../DashboardHome';
+import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 
 const UsersManageMent = () => {
-
+    const [axiosSecure] = useAxiosSecure()
     const { refetch, data: list = [] } = useQuery({
         querykey: ["carts"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/user`)
-            return res.json()
+            const res = await axiosSecure.get(`/user`)
+            return res.data
         },
     })
 
