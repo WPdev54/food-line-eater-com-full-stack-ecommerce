@@ -63,6 +63,7 @@ const FoodCard = ({item}) => {
       <div className="card w-96 mx-auto mb-8 mt-7 bg-base-100 shadow-2xl">
         <figure>
           <img
+            className="h-64 w-full"
             src={image}
             loading="eager|lazy"
           />

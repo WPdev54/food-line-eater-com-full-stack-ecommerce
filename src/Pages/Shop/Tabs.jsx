@@ -13,6 +13,7 @@ const Food = () => {
   const salad = menu.filter((item) => item.category === "salad");
   const pizza = menu.filter((item) => item.category === "pizza");
   const drinks = menu.filter((item) => item.category === "drinks");
+  const dessi = menu.filter((item) => item.category === "dessi");
 
 
   return (
@@ -23,6 +24,7 @@ const Food = () => {
         <Tab>pizza</Tab>
         <Tab>soups</Tab>
         <Tab>desserts</Tab>
+        <Tab>dessi</Tab>
         <Tab>drinks</Tab>
       </TabList>
 
@@ -40,6 +42,10 @@ const Food = () => {
 
       <TabPanel>
        <ShopTab item={desserts}/>
+      </TabPanel>
+
+      <TabPanel>
+       <ShopTab item={dessi}/>
       </TabPanel>
 
       <TabPanel>

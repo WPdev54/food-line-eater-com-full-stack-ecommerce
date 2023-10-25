@@ -16,7 +16,7 @@ const Admin = () => {
                 </NavLink>
             </li>
             <li>
-                <NavLink to="/dashboard/add%items">
+                <NavLink to="/dashboard/additems">
                     <ImSpoonKnife />
                     <span>add items</span>
                 </NavLink>
