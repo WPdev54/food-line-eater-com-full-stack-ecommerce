@@ -1,3 +1,4 @@
+
 const express = require("express");
 const app = express();
 const cors = require("cors");
@@ -60,6 +61,11 @@ async function run() {
     const menuCollection = client.db("eaterDB").collection("menu")
     const cartCollection = client.db("eaterDB").collection("carts")
 
+    app.post('/jwt', (req, res) => {
+      const user = req.body;
+      const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' } )
+      res.send({ token })
+    })
     // JWT POST API
 
     const verifyAdmin = async (req , res , next) => {
@@ -72,16 +78,17 @@ async function run() {
       next()
     }
 
-    app.post('/jwt', (req, res) => {
-      const user = req.body;
-      const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET,)
-      res.send({ token })
-    })
 
     // menu item api
 
     app.get('/menu', async (req, res) => {
       const result = await menuCollection.find().toArray()
+      res.send(result)
+    })
+
+    app.post('/menu', async(req , res) => {
+      const newItem = req.body
+      const result = await menuCollection.insertOne(newItem)
       res.send(result)
     })
 
