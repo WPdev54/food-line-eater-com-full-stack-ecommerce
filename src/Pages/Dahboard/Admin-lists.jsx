@@ -22,7 +22,7 @@ const Admin = () => {
                 </NavLink>
             </li>
             <li>
-                <NavLink to="/dashboard/manage%items">
+                <NavLink to="/dashboard/manageitems">
                     <BsFillMenuButtonWideFill />
                     <span>manage items</span>
                 </NavLink>

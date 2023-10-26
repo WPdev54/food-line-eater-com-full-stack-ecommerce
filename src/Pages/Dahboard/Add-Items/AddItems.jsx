@@ -31,11 +31,15 @@ const AddItems = () => {
                 axiosSecure.post('/menu' , newItem)
                 .then(data => {
                     console.log('AfterPosting NEw Menu Item ' , data.data);
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'SuccessFully Added',
-                        text: 'SuccessFully Added New Items To The Menu',
-                      })
+
+                      if(data.data.insertedId){
+                        reset()
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'SuccessFully Added',
+                            text: 'SuccessFully Added New Items To The Menu',
+                          })
+                      }
                 })
             }
         })
